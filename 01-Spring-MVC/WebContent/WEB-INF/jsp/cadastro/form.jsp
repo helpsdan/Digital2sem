@@ -18,8 +18,8 @@
 				placeholder="preco" name="preco">
 		</div>
 		<div>
-			<input type="checkbox" name="automatico" id="idAutomatico"> 
-			<label for="idAutomatico">Automático</label>
+			<input type="checkbox" name="automatico" id="idAutomatico"> <label
+				for="idAutomatico">Automático</label>
 		</div>
 		<div>
 			<select name="marca">
@@ -31,7 +31,11 @@
 		<div>
 			<input type="submit" value="Ok">
 		</div>
-
 	</form>
+	${msg}<br/>
+	${carro.placa}<br/>
+	${carro.preco}<br/>
+	${carro.automatico}<br/>
+	${carro.marca}<br/>
 </body>
 </html>
