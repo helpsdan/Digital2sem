@@ -1,27 +1,23 @@
 package br.com.fiap.spring.model;
 
 public class Festa {
-
+	
 	private int id;
-	private int qtdPessoas;
+	
 	private String endereco;
+	
 	private boolean lembrancinha;
+	
 	private String cardapio;
 	
-	public Festa(int qtdPessoas, String endereco, boolean lembrancinha, String cardapio) {
-		super();
-		this.qtdPessoas = qtdPessoas;
-		this.endereco = endereco;
-		this.lembrancinha = lembrancinha;
-		this.cardapio = cardapio;
+	private int quantidade;
+
+	public int getId() {
+		return id;
 	}
 
-	public int getQtdPessoas() {
-		return qtdPessoas;
-	}
-
-	public void setQtdPessoas(int qtdPessoas) {
-		this.qtdPessoas = qtdPessoas;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getEndereco() {
@@ -48,13 +44,12 @@ public class Festa {
 		this.cardapio = cardapio;
 	}
 
-	public int getId() {
-		return id;
+	public int getQuantidade() {
+		return quantidade;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
-	
-	
+
 }

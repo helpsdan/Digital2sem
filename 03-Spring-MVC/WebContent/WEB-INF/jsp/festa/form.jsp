@@ -1,35 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <tags:template titulo="Cadastro de Festa">
-	<jsp:body>
+	<h1>Cadastro de Festa</h1>
 	
-		<c:if test="${not empty msg}">
-		<div class="alert alert-sucess">
-			${msg } 
+	<c:if test="${not empty msg }">
+		<div class="alert alert-success">
+			${msg }
 		</div>
-		</c:if>
-		<div>
-			<form action="cadastrar" method="post">
-				<div class="form-group">
-					<label for="id-qtd">Quantidade de Pessoas</label>
-					<input type="text" name="qtd" id="id-qtd" class="form-control">
-				</div>
-				<div class="form-group">
-					<label for="id-end">EndereÃ§o</label>
-					<input type="text" name="end" id="id-end" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="checkbox" name="lemb" id="id-lemb"> <label
-							for="id-lemb">Lembrancinha</label>
-				</div>
-				<div class="form-group">			
-					<label for="id-cardapio">CardÃ¡pio</label>
-					<textarea rows="4" cols="50" class="form-control"></textarea>
-				</div>
-				<input type="submit" value="Enviar" class="btn btn-primary">
-			</form>
+	</c:if>
+	
+	<form action="cadastrar" method="post">
+		<div class="form-group">
+			<label for="id-qtd">Quantidade de Pessoas</label>
+			<input type="text" name="quantidade" class="form-control" id="id-qtd">
 		</div>
-	</jsp:body>
+		<div class="form-group">
+			<label for="id-end">Endereço</label>
+			<input type="text" name="endereco" class="form-control" id="id-end">
+		</div>
+		<div class="form-group">
+			<input type="checkbox" name="lembrancinha" id="id-lem">
+			<label for="id-lem">Lembrancinha</label>
+		</div>
+		<div class="form-group">
+			<label for="id-car">Cardápio</label>
+			<textarea rows="5" cols="50" class="form-control" 
+				name="cardapio" id="id-car"></textarea>
+		</div>
+		<input type="submit" value="Cadastrar" class="btn btn-primary">
+	</form>
 </tags:template>

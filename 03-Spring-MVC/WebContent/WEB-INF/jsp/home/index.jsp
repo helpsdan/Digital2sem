@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
-<tags:template titulo="Home">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+
+<tags:template titulo="Home Principal">
 
 	<jsp:attribute name="scripts">
-		<p>Algum script JQuery</p>
+		<p>Algum script JQuery...</p>
 	</jsp:attribute>
-
+	
 	<jsp:body>
-		<h1>Hello World</h1>
+		<h1>Olá Mundo!</h1>
 	</jsp:body>
-
-
+	
 </tags:template>

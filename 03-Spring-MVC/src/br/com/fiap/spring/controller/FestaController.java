@@ -12,16 +12,28 @@ import br.com.fiap.spring.model.Festa;
 @RequestMapping("festa")
 public class FestaController {
 
-	//método que abre a página com o formulário
 	@GetMapping("cadastrar")
 	public String abrirForm() {
-		return "festa/form";
+		return "festa/form"; //pasta + arquivo jsp
 	}
 	
-	//método que processa as informações do formulário
 	@PostMapping("cadastrar")
-	public ModelAndView processarForm(Festa f) {
-		return new ModelAndView("festa/form").addObject("msg", "Festa cadastrada");
+	public ModelAndView processarForm(Festa festa) {
+		//chamar o dao...
+		return new ModelAndView("festa/form") //pasta + arquivo jsp
+				.addObject("msg", "Festa cadastrada!"); // mensagem para a tela jsp
 	}
-		
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
