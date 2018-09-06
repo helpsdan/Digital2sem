@@ -8,18 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity(name="T_BEBIDA")
-@SequenceGenerator(name="bebida", sequenceName="SQ_T_BEBIDA",allocationSize=1)
+@Entity
+@Table(name="T_BEBIDA")
+@SequenceGenerator(name="bebida",sequenceName="SQ_T_BEBIDA",allocationSize=1)
 public class Bebida {
-	
+
 	@Id
 	@Column(name="cd_bebida")
-	@GeneratedValue(generator="bebida", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="bebida",strategy=GenerationType.SEQUENCE)
 	private int codigo;
 	
 	@Column(name="nm_bebida")

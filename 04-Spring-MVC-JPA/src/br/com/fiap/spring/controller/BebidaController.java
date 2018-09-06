@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.jpa.dao.BebidaDAO;
+import br.com.fiap.jpa.exception.KeyNotFoundException;
 import br.com.fiap.spring.model.Bebida;
 
 @Controller
@@ -19,31 +20,65 @@ public class BebidaController {
 
 	@Autowired
 	private BebidaDAO dao;
-
-	@GetMapping("editar/{id}")
-	public ModelAndView abrirEdicao(@PathVariable("id") int codigo) {
-		return new ModelAndView("bebida/edicao").addObject("bebida", dao.read(codigo));
+	
+	@GetMapping("buscar")
+	public ModelAndView pesquisarBebida(String nomeBebida) {
+		return new ModelAndView("bebida/lista")
+				.addObject("bebidas", dao.buscarPorNome(nomeBebida));
 	}
 	
+	@PostMapping("remover")
+	@Transactional
+	public String remover(int codigo, RedirectAttributes r) {
+		try {
+			dao.delete(codigo);
+			r.addFlashAttribute("msg", "Bebida excluida");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return "redirect:/bebida/listar";
+		
+	}	
+	
+	@Transactional
+	@PostMapping("editar")
+	public String processarEdicao(Bebida bebida, RedirectAttributes r) {
+		dao.update(bebida);		
+		r.addFlashAttribute("msg", "Bebida atualizada!");
+		return "redirect:/bebida/listar";
+	}
+	
+	@GetMapping("editar/{id}")
+	public ModelAndView abrirEdicao(@PathVariable("id") int codigo) {
+		return new ModelAndView("bebida/edicao")
+				.addObject("bebida", dao.read(codigo));
+	}
 	
 	@GetMapping("listar")
 	public ModelAndView abrirLista() {
-		return new ModelAndView("bebida/listar").addObject("bebidas", dao.list());
+		return new ModelAndView("bebida/lista")
+				.addObject("bebidas", dao.list());
 	}
-
+	
 	@GetMapping("cadastrar")
 	public String abrirForm() {
-		return "bebida/form"; // pasta + arquivo jsp
+		return "bebida/form";
 	}
-
-	@PostMapping("cadastrar")
+	
 	@Transactional
+	@PostMapping("cadastrar")
 	public ModelAndView processarForm(Bebida bebida, RedirectAttributes r) {
 		dao.create(bebida);
-		//adiciona uma mensagem no objeto que guarda informação apos redirect
-		r.addFlashAttribute("msg", "Bebida cadastrada");
-		//redirect envia para uma url
-		return new ModelAndView("redirect:/bebida/cadastrar"); // pasta + arquivo jsp
+		//Adiciona uma mensagem no objeto que guarda informação após redirect
+		r.addFlashAttribute("msg", "Bebida cadastrada!");
+		//Redirect envia para uma URL
+		return new ModelAndView("redirect:/bebida/cadastrar");
+				
 	}
-
+	
 }
+
+
+
+
+

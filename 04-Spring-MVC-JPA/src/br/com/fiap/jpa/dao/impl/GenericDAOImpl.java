@@ -2,12 +2,8 @@ package br.com.fiap.jpa.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
-
 import br.com.fiap.jpa.dao.GenericDAO;
 import br.com.fiap.jpa.exception.CommitException;
 import br.com.fiap.jpa.exception.KeyNotFoundException;
@@ -15,9 +11,9 @@ import br.com.fiap.jpa.exception.KeyNotFoundException;
 public class GenericDAOImpl<T,K> 
 						implements GenericDAO<T, K>{
 
-	//Não precisamos mais instanciar o entity manager
+	//não precisamos mais instanciar o EntityManager
 	@PersistenceContext
-	private EntityManager em;
+	protected EntityManager em;
 	
 	private Class<T> clazz;
 	
@@ -51,7 +47,6 @@ public class GenericDAOImpl<T,K>
 		}
 		em.remove(entity);
 	}
-
 
 	@Override
 	public List<T> list() {

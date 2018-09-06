@@ -13,10 +13,8 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
-	<!-- SEMPRE REFERENCIAR OS PACOTES QUE SERÃO UTILIZADOS LEMBRAR DESSA CARALHA -->
 	<context:component-scan
-		base-package="br.com.fiap.spring.controller
-						,br.com.fiap.jpa.dao" />
+		base-package="br.com.fiap.spring.controller,br.com.fiap.jpa.dao" />
 
 	<mvc:annotation-driven />
 
@@ -45,7 +43,7 @@
 			value="oracle.jdbc.OracleDriver" />
 		<property name="url"
 			value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl" />
-		<property name="username" value="RM78501" />
+		<property name="username" value="rm78501" />
 		<property name="password" value="111197" />
 	</bean>
 
@@ -55,6 +53,7 @@
 		<property name="entityManagerFactory"
 			ref="entityManagerFactory" />
 	</bean>
+	
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
 
