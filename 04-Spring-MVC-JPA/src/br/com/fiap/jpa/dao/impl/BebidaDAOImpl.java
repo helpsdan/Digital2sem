@@ -14,7 +14,7 @@ public class BebidaDAOImpl
 	@Override
 	public List<Bebida> buscarPorNome(String nome) {
 
-		return em.createQuery("from Bebida where nome like :m", Bebida.class)
+		return em.createQuery("from Bebida where upper(nome) like upper(:m)", Bebida.class)
 				.setParameter("m", "%"+nome+"%")
 				.getResultList();
 	}
